@@ -100,7 +100,8 @@ called and it will update the output image based on the current trackbar values.
 
 Let's analyze these two functions:
 
-### The erosion function
+**The erosion function**
+
 @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp erosion
 
 The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
@@ -123,7 +124,7 @@ receives three arguments:
 
 That is all. We are ready to perform the erosion of our image.
 
-### The dilation function
+**The dilation function**
 
 The code is below. As you can see, it is completely similar to the snippet of code for **erosion**.
 Here we also have the option of defining our kernel, its anchor point and the size of the operator
@@ -150,7 +151,8 @@ called and it will update the output image based on the current trackbar values.
 
 Let's analyze these two functions:
 
-### The erosion function
+**The erosion function**
+
 @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py erosion
 
 The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
@@ -171,7 +173,7 @@ specified, it is assumed to be in the center.
 
 That is all. We are ready to perform the erosion of our image.
 
-### The dilation function
+**The dilation function**
 
 The code is below. As you can see, it is completely similar to the snippet of code for **erosion**.
 Here we also have the option of defining our kernel, its anchor point and the size of the operator
