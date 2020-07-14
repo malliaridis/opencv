@@ -88,18 +88,19 @@ Explanation
 Most of the material shown here is trivial (if you have any doubt, please refer to the tutorials in
 previous sections). Let's check the general structure of the C++ program:
 
--   Load an image (can be BGR or grayscale)
--   Create two windows (one for dilation output, the other for erosion)
--   Create a set of two Trackbars for each operation:
+-#   Load an image (can be BGR or grayscale)
+-#   Create two windows (one for dilation output, the other for erosion)
+-#   Create a set of two Trackbars for each operation:
     -   The first trackbar "Element" returns either **erosion_elem** or **dilation_elem**
     -   The second trackbar "Kernel size" return **erosion_size** or **dilation_size** for the
         corresponding operation.
--   Every time we move any slider, the user's function **Erosion** or **Dilation** will be
-    called and it will update the output image based on the current trackbar values.
+
+Every time we move any slider, the user's function **Erosion** or **Dilation** will be
+called and it will update the output image based on the current trackbar values.
 
 Let's analyze these two functions:
 
-### erosion
+### The erosion function
 @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp erosion
 
 The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
@@ -121,6 +122,13 @@ receives three arguments:
     specified, it is assumed to be in the center.
 
 That is all. We are ready to perform the erosion of our image.
+
+### The dilation function
+
+The code is below. As you can see, it is completely similar to the snippet of code for **erosion**.
+Here we also have the option of defining our kernel, its anchor point and the size of the operator
+to be used.
+@snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp dilation
 @end_toggle
 
 @add_toggle_python
@@ -138,7 +146,7 @@ previous sections). Let's check the general structure of the python script:
 
 Let's analyze these two functions:
 
-### erosion
+### The erosion function
 @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py erosion
 
 The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
@@ -158,24 +166,19 @@ Then, we just have to specify the size of our kernel and the *anchor point*. If 
 specified, it is assumed to be in the center.
 
 That is all. We are ready to perform the erosion of our image.
-@end_toggle
 
-@note Additionally, there are further parameters that allow you to perform multiple erosions
-(iterations) at once and also set the border type and value. However, We haven't used those
-in this simple tutorial. You can check out the reference for more details.
-
-### dilation
+### The dilation function
 
 The code is below. As you can see, it is completely similar to the snippet of code for **erosion**.
 Here we also have the option of defining our kernel, its anchor point and the size of the operator
 to be used.
-@add_toggle_cpp
-@snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp dilation
-@end_toggle
 
-@add_toggle_python
 @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py dilation
 @end_toggle
+
+@note Additionally, there are further parameters that allow you to perform multiple erosions/dilations
+(iterations) at once and also set the border type and value. However, We haven't used those
+in this simple tutorial. You can check out the reference for more details.
 
 Results
 -------
