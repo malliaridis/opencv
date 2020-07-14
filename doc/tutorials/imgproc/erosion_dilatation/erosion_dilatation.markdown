@@ -181,7 +181,11 @@ reference for more details.
 Results
 -------
 
-Compile the code above and execute it with an image as argument. For instance, using this image:
+Compile the code above and execute it (or run the script if using python) with an image as argument.
+If you do not provide an image as argument the default sample image
+([LinuxLogo.jpg](https://github.com/opencv/opencv/tree/master/samples/data/LinuxLogo.jpg)) will be used.
+
+For instance, using this image:
 
 ![](images/Morphology_1_Tutorial_Original_Image.jpg)
 
