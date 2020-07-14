@@ -135,14 +135,18 @@ to be used.
 Most of the material shown here is trivial (if you have any doubt, please refer to the tutorials in
 previous sections). Let's check the general structure of the python script:
 
--#   Load an image (can be BGR or grayscale)
--#   Create two windows (one for erosion output, the other for dilation) with a set of trackbars each
+@snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py main
+
+-#  Load an image (can be BGR or grayscale)
+-#  Create two windows (one for erosion output, the other for dilation) with a set of trackbars each
     -   The first trackbar "Element" returns the value for the morphological type that will be mapped
         (1 = rectangle, 2 = cross, 3 = ellipse)
     -   The second trackbar "Kernel size" returns the size of the element for the
         corresponding operation
-    -   Every time we move any slider, the user's function **Erosion** or **Dilation** will be
-        called and it will update the output image based on the current trackbar values
+-#  We call once erosion and dilation to show the initial image
+
+Every time we move any slider, the user's function **erosion** or **dilation** will be
+called and it will update the output image based on the current trackbar values.
 
 Let's analyze these two functions:
 
