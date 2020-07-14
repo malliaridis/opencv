@@ -84,6 +84,7 @@ This tutorial's code is shown below. You can also download it
 Explanation
 -----------
 
+@add_toggle_cpp
 -#  Most of the material shown here is trivial (if you have any doubt, please refer to the tutorials in
     previous sections). Let's check the general structure of the C++ program:
 
@@ -101,25 +102,65 @@ Explanation
 -#  **erosion:**
     @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp erosion
 
-    -   The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
-        receives three arguments:
-        -   *src*: The source image
-        -   *erosion_dst*: The output image
-        -   *element*: This is the kernel we will use to perform the operation. If we do not
-            specify, the default is a simple `3x3` matrix. Otherwise, we can specify its
-            shape. For this, we need to use the function cv::getStructuringElement :
-            @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp kernel
+    The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
+    receives three arguments:
+    -   *src*: The source image
+    -   *erosion_dst*: The output image
+    -   *element*: This is the kernel we will use to perform the operation. If we do not
+        specify, the default is a simple `3x3` matrix. Otherwise, we can specify its
+        shape. For this, we need to use the function cv::getStructuringElement :
+        @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp kernel
 
-            We can choose any of three shapes for our kernel:
+        We can choose any of three shapes for our kernel:
 
-            -   Rectangular box: MORPH_RECT
-            -   Cross: MORPH_CROSS
-            -   Ellipse: MORPH_ELLIPSE
+        -   Rectangular box: MORPH_RECT
+        -   Cross: MORPH_CROSS
+        -   Ellipse: MORPH_ELLIPSE
 
-            Then, we just have to specify the size of our kernel and the *anchor point*. If not
-            specified, it is assumed to be in the center.
+        Then, we just have to specify the size of our kernel and the *anchor point*. If not
+        specified, it is assumed to be in the center.
 
-    -   That is all. We are ready to perform the erosion of our image.
+    That is all. We are ready to perform the erosion of our image.
+@end_toggle
+
+@add_toggle_python
+-#  Most of the material shown here is trivial (if you have any doubt, please refer to the tutorials in
+    previous sections). Let's check the general structure of the python script:
+
+    -   Load an image (can be BGR or grayscale)
+    -   Create two windows (one for erosion output, the other for dilation)
+    -   Create two sets of two Trackbars for each operation / window:
+        -   The first trackbar "Element" returns the mapped value for the morphological type
+            (1 = rectangle, 2 = cross, 3 = ellipse)
+        -   The second trackbar "Kernel size" returns the size of the element for the
+            corresponding operation.
+    -   Every time we move any slider, the user's function **Erosion** or **Dilation** will be
+        called and it will update the output image based on the current trackbar values.
+
+    Let's analyze these two functions:
+
+-#  **erosion:**
+    @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py erosion
+
+    The function that performs the *erosion* operation is @ref cv::erode . As we can see, it
+    receives two arguments and returns the processed image:
+    -   *src*: The source image
+    -   *element*: The kernel we will use to perform the operation. We can specify its
+        shape by using the function cv::getStructuringElement :
+        @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py kernel
+
+        We can choose any of three shapes for our kernel:
+
+        -   Rectangular box: MORPH_RECT
+        -   Cross: MORPH_CROSS
+        -   Ellipse: MORPH_ELLIPSE
+
+        Then, we just have to specify the size of our kernel and the *anchor point*. If the anchor point not
+        specified, it is assumed to be in the center.
+
+    That is all. We are ready to perform the erosion of our image.
+@end_toggle
+
 @note Additionally, there is another parameter that allows you to perform multiple erosions
 (iterations) at once. However, We haven't used it in this simple tutorial. You can check out the
 reference for more details.
@@ -129,7 +170,13 @@ reference for more details.
     The code is below. As you can see, it is completely similar to the snippet of code for **erosion**.
     Here we also have the option of defining our kernel, its anchor point and the size of the operator
     to be used.
+    @add_toggle_cpp
     @snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp dilation
+    @end_toggle
+
+    @add_toggle_python
+    @snippet python/tutorial_code/imgProc/erosion_dilatation/morphology_1.py dilation
+    @end_toggle
 
 Results
 -------
