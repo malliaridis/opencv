@@ -88,12 +88,16 @@ Explanation
 Most of the material shown here is trivial (if you have any doubt, please refer to the tutorials in
 previous sections). Let's check the general structure of the C++ program:
 
+@snippet cpp/tutorial_code/ImgProc/Morphology_1.cpp main
+
 -#   Load an image (can be BGR or grayscale)
 -#   Create two windows (one for dilation output, the other for erosion)
 -#   Create a set of two Trackbars for each operation:
     -   The first trackbar "Element" returns either **erosion_elem** or **dilation_elem**
     -   The second trackbar "Kernel size" return **erosion_size** or **dilation_size** for the
         corresponding operation.
+-#  Call once erosion and dilation to show the initial image.
+
 
 Every time we move any slider, the user's function **Erosion** or **Dilation** will be
 called and it will update the output image based on the current trackbar values.
@@ -144,7 +148,7 @@ previous sections). Let's check the general structure of the python script:
         (1 = rectangle, 2 = cross, 3 = ellipse)
     -   The second trackbar "Kernel size" returns the size of the element for the
         corresponding operation
--#  We call once erosion and dilation to show the initial image
+-#  Call once erosion and dilation to show the initial image
 
 Every time we move any slider, the user's function **erosion** or **dilation** will be
 called and it will update the output image based on the current trackbar values.
