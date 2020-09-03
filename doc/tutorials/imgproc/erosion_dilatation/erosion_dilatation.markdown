@@ -285,33 +285,3 @@ iterations.
 
 ![](images/Morphology_1_Result.jpg)
 (depending on the programming language the output might vary a little or be only 1 window)
-
-Troubleshooting
----
-@add_toggle_python
-Depending on your setup and your python version there are various errors that can occur:
-- **AttributeError: module 'cv2' has no attribute 'samples'**:
-
-    This error occurs normally when using pre-built python 3 packages of OpenCV (tested with Ubuntu 18.04 LTS).
-
-    Current workaround is to replace the line
-    @code{.py}
-    src = cv.imread(cv.samples.findFile(args.input))
-    @endcode
-    with
-    @code{.py}
-    src = cv.imread(args.input)
-    @endcode
-    and provide a sample file manually with the parameter `--input`.
-
-- **NULL window handler in function 'icvFindTrackBarByName'**:
-
-   This error occurs if you are running the script with python 3 but have installed
-   python 2 to python 3 ported libraries. This usually happens when installing OpenCV via
-   @code
-   pip install opencv-python
-   @endcode
-
-   The solution for this error is to use python 2 or remove the python 2 library and
-   install the python 3 library.
-@end_toggle
